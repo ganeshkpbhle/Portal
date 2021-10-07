@@ -1,0 +1,16 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+</div>
+<div class="row">
+    <!-- Earnings (Monthly) Card Example -->
+    <div routerLink="total-students" class="col-xl-5 mb-4">
+        <app-card title="Total Students" count={{count1}}></app-card>
+    </div>
+    <div routerLink="today" class="col-xl-5 mb-4">
+        <app-card title="Today's Strength" count={{count2}}></app-card>
+    </div>
+</div>
+<div class="row">
+    <router-outlet></router-outlet>
+</div>

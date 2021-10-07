@@ -1,0 +1,51 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Add student</h1>
+    <a routerLink="/create-student" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add student</a>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Country</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Country</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+
+                <tbody>
+                    <tr *ngFor="let student of studentList">
+                        <td>{{student.id}}</td>
+                        <td>{{student.Name}}</td>
+                        <td>{{student.Email}}</td>
+                        <td>{{student.phoneNumber}}</td>
+                        <td>{{student.country}}</td>
+                        <td>
+                            <button [routerLink]="['/edit-student',student.id]" class="btn btn-primary btn-sm mr-2">Edit</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteData(student.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
