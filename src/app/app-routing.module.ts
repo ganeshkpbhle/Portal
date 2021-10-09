@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppendstudentComponent } from './appendstudent/appendstudent.component';
 import { AttendentsComponent } from './attendents/attendents.component';
+import { ChartComponent } from './chart/chart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditstudentComponent } from './editstudent/editstudent.component';
 import { ListComponent } from './list/list.component';
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path:"attendence",
     component:AttendentsComponent
+  },
+  {
+    path:"chart",
+    component:ChartComponent
   }
 ];
 

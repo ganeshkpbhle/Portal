@@ -34,11 +34,11 @@ export class DashboardComponent implements OnInit {
     });
   }
   event(title:string){
-    if(title==="Total Students"){
-      this.router.navigate(["total-students"]);
+    if(title==="total-students"){
+      this.router.navigate(["/total-students"]);
     }
     else{
-
+      this.router.navigate(["/today"]);
     }
   }
   ngOnInit(): void {

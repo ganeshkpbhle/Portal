@@ -30,8 +30,6 @@ export class AttendentsComponent implements OnInit {
     });
     this.userService.getAll().subscribe((fetched) => {
       this.studentsLi=fetched;
-      console.log(typeof fetched);
-      console.log(typeof this.studentsLi);
     });
   }
   ngOnInit(): void {
@@ -44,7 +42,6 @@ export class AttendentsComponent implements OnInit {
       this.studentsLi.forEach((element) => {
         this.empty.students.push({ "studentId": element.id, "studentName": element.Name, "status": false });
       });
-      console.log(this.studentsLi==fetched);
     });
   }
   loadData() {
@@ -74,9 +71,8 @@ export class AttendentsComponent implements OnInit {
 
   }
   check(event: any, data: number) {
-    console.log(event.checked);
     this.putData.students[data].status = event.checked;
-    console.log(this.putData.date, this.putData.students[data]);
+    this.allPresent=false;
   }
   dateProcess() {
     this.generateEmpty();
@@ -92,17 +88,30 @@ export class AttendentsComponent implements OnInit {
   execUpdate() {
     console.log(this.putData);
     this.dateservice.updateById(this.putData.id,this.putData).subscribe(()=>{
+      this.loadData();
       this.router.navigate(["/attendence"]);
     });
   }
   statsSet(event:any){
+    console.log(this.allPresent);
     if(event.checked){
       this.putData.students.forEach((element,index)=>{
-        this.putData.students[index].status=event.checked;
+        let temp:boolean=this.putData.students[index].status;
+        this.putData.students[index].status=true;
       });
     }
     else{
+      this.putData.students.forEach((element,index)=>{
+        let temp:boolean=this.putData.students[index].status;
+        this.putData.students[index].status=!temp;
+      });
       this.loadData();
     }
+  }
+  clear(){
+    this.putData.students.forEach((element,index)=>{
+      this.putData.students[index].status=false;
+      this.studentList[index].status=false;
+    });
   }
 }

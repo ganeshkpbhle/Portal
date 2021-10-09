@@ -16,6 +16,6 @@ export class AttendenceService {
   }
 
   updateById(Id:number|undefined,data:dailyData){
-    return this.http.put(`https://615e89e13d1491001755a97b.mockapi.io/attendance/${Id}`,data)
+     return this.http.put(`https://615e89e13d1491001755a97b.mockapi.io/attendance/${Id}`, data)
   }
 }

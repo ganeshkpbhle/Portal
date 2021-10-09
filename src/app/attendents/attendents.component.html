@@ -4,6 +4,7 @@
         <button class="btn btn-primary btn-sm ml-2" [disabled]="update" (click)="execUpdate()">Commit Updates</button>
         <button class="btn btn-primary btn-sm ml-2 mr-4" [disabled]="save" (click)="commit()">Save</button>
         <input type="checkbox" formControlName="statusall" [checked]="allPresent" [(ngModel)]="allPresent" (change)="statsSet($event.target)">&nbsp;Mark all as Present
+        <button class="btn btn-primary btn-sm ml-2" (click)="clear()">Clear All</button>
     </div>
 
     <div class="card shadow mb-4">
