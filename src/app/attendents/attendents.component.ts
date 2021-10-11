@@ -22,12 +22,7 @@ export class AttendentsComponent implements OnInit {
   studentsLi:Array<Data>=[];
   putData: dailyData = { "date":"", "students": [] };
   empty: dailyData = { "date":"", "students": [] };
-  Form: FormGroup;
   constructor(private userService: DataService, private dateservice: AttendenceService, private router: Router) {
-    this.Form = new FormGroup({
-      datepick: new FormControl(),
-      statusall:new FormControl()
-    });
     this.userService.getAll().subscribe((fetched) => {
       this.studentsLi=fetched;
     });
@@ -75,6 +70,7 @@ export class AttendentsComponent implements OnInit {
     this.allPresent=false;
   }
   dateProcess() {
+
     this.generateEmpty();
     this.loadData();
   }
@@ -93,7 +89,6 @@ export class AttendentsComponent implements OnInit {
     });
   }
   statsSet(event:any){
-    console.log(this.allPresent);
     if(event.checked){
       this.putData.students.forEach((element,index)=>{
         let temp:boolean=this.putData.students[index].status;
@@ -109,6 +104,7 @@ export class AttendentsComponent implements OnInit {
     }
   }
   clear(){
+    this.allPresent=false;
     this.putData.students.forEach((element,index)=>{
       this.putData.students[index].status=false;
       this.studentList[index].status=false;

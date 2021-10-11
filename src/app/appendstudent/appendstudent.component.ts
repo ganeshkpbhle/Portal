@@ -17,7 +17,7 @@ export class AppendstudentComponent implements OnInit {
       'Name': new FormControl('', Validators.required),
       'Email': new FormControl('', [Validators.required, Validators.email]),
       'phoneNumber': new FormControl('', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
-      'country': new FormControl('', Validators.required)
+      'country': new FormControl([Validators.required])
     })
   }
 

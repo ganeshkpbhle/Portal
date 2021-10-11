@@ -1,49 +1,47 @@
-<form [formGroup]="Form">
-    <div class="d-sm-flex align-items-center mb-4">
-        <input type="date" [value]="date" formControlName="datepick" [(ngModel)]="date" (change)="dateProcess()" />
-        <button class="btn btn-primary btn-sm ml-2" [disabled]="update" (click)="execUpdate()">Commit Updates</button>
-        <button class="btn btn-primary btn-sm ml-2 mr-4" [disabled]="save" (click)="commit()">Save</button>
-        <input type="checkbox" formControlName="statusall" [checked]="allPresent" [(ngModel)]="allPresent" (change)="statsSet($event.target)">&nbsp;Mark all as Present
-        <button class="btn btn-primary btn-sm ml-2" (click)="clear()">Clear All</button>
+<div class="d-sm-flex align-items-center mb-4">
+    <input type="date" [value]="date" [(ngModel)]="date" (change)="dateProcess()" />
+    <button class="btn btn-primary btn-sm ml-2" [disabled]="update" (click)="execUpdate()">Commit Updates</button>
+    <button class="btn btn-primary btn-sm ml-2 mr-4" [disabled]="save" (click)="commit()">Save</button>
+    <input type="checkbox" name="allpresent" [checked]="allPresent" [(ngModel)]="allPresent" (change)="statsSet($event.target)">&nbsp;Mark all as Present
+    <button class="btn btn-primary btn-sm ml-2" (click)="clear()">Clear All</button>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
     </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>StudentID</th>
+                        <th>StudentName</th>
+                        <th>present/absent</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Date</th>
+                        <th>StudentID</th>
+                        <th>StudentName</th>
+                        <th>present/absent</th>
+                    </tr>
+                </tfoot>
 
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>StudentID</th>
-                            <th>StudentName</th>
-                            <th>present/absent</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Date</th>
-                            <th>StudentID</th>
-                            <th>StudentName</th>
-                            <th>present/absent</th>
-                        </tr>
-                    </tfoot>
+                <tbody>
+                    <tr *ngFor="let student of studentList let i=index">
+                        <td>{{date}}</td>
+                        <td>{{student.studentId}}</td>
+                        <td>{{student.studentName}}</td>
+                        <td>
+                            <input type="checkbox" name="status" [checked]="student.status||allPresent" value={{student.studentId}} (change)="check($event.target,i)">
+                        </td>
+                    </tr>
+                </tbody>
 
-                    <tbody>
-                        <tr *ngFor="let student of studentList let i=index">
-                            <td>{{date}}</td>
-                            <td>{{student.studentId}}</td>
-                            <td>{{student.studentName}}</td>
-                            <td>
-                                <input type="checkbox" name="status" [checked]="student.status||allPresent" value={{student.studentId}} (change)="check($event.target,i)">
-                            </td>
-                        </tr>
-                    </tbody>
-
-                </table>
-            </div>
+            </table>
         </div>
     </div>
-</form>
+</div>

@@ -1,7 +1,16 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-xl-6 align-items-center">
-            <input type="month" [value]="date" [(ngModel)]="date" (change)="dateProcess()" />
+            <div *ngIf="viewOption==='month';then content1 else content2">
+            </div>
+            <ng-template #content1><input [type]="viewOption" [value]="date" [(ngModel)]="date" (change)="dateProcess()" /></ng-template>
+            <ng-template #content2><input [type]="viewOption" [value]="currWeek" [(ngModel)]="currWeek" (change)="weekProcess()" /></ng-template>
+        </div>
+        <div class="col-xl-6 align-items-center">
+            <select class="form-control s-box" (change)="selectProcess($event.target)">
+                <option value="month" selected>Monthly</option>
+                <option value="week">Weekly</option>
+            </select>
         </div>
     </div>
     <div class="row">
