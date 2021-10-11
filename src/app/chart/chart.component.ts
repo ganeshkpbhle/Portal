@@ -42,6 +42,7 @@ export class ChartComponent implements OnInit {
     this.getData();
   }
   Init() {
+    console.log(this.date1);
     this.drawData = [];
     this.list = [];
     let c = 0;
@@ -111,6 +112,7 @@ export class ChartComponent implements OnInit {
           });
         }
       }
+      console.log(tempData);
       tempData.forEach((element,index)=>{
         let cnt = 0;
           c += 1;
@@ -122,7 +124,6 @@ export class ChartComponent implements OnInit {
           let tempp: draw = { "name": (new Date(element.date)).toISOString().slice(8, 10) + "(" + (new Date(element.date)).toUTCString().slice(0, 3) + ")", "value": cnt, };
           this.list.push(tempp);
       });
-      console.log(this.list);
       if (c > 0) {
         //this.list.sort(this.custom_sort);
         this.drawData.push({ "name": "StrengthLine", "series": this.list });
@@ -165,7 +166,8 @@ export class ChartComponent implements OnInit {
   selectProcess(event: any) {
     this.viewOption = event.value;
     this.Week(this.currDate.toISOString());
-    this.date1 = this.getDateByWeek(this.currDate.toISOString()).toISOString().slice(0, 10);
+    this.date1 = this.getDateByWeek(this.currWeek).toISOString().slice(0, 10);
+    console.log(this.date1);
     this.Init();
   }
 
