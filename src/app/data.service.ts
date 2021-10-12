@@ -8,22 +8,23 @@ import { Data } from '@angular/router';
 export class DataService {
   constructor(private http:HttpClient) { }
   save(student:Data){
-    return this.http.post(`https://5cdd0a92b22718001417c19d.mockapi.io/api/users`,student);
+    return this.http.post(`https://615e89e13d1491001755a97b.mockapi.io/users`,student);
   }
 
   getAll(){
-    return this.http.get<Array<Data>>(`https://5cdd0a92b22718001417c19d.mockapi.io/api/users`);
+    return this.http.get<Array<Data>>(`https://615e89e13d1491001755a97b.mockapi.io/users`);
   }
 
   getByID(id:number){
-    return this.http.get<Data>(`https://5cdd0a92b22718001417c19d.mockapi.io/api/users/${id}`);
+    return this.http.get<Data>(`https://615e89e13d1491001755a97b.mockapi.io/users/${id}`);
   }
 
   updateById(studentId:number,studentdata:Data){
-    return this.http.put(`https://5cdd0a92b22718001417c19d.mockapi.io/api/users/${studentId}`,studentdata);
+    return this.http.put(`https://615e89e13d1491001755a97b.mockapi.io/users/${studentId}`,studentdata);
   }
 
   deleteById(id:number){
-    return this.http.delete(`https://5cdd0a92b22718001417c19d.mockapi.io/api/users/${id}`)
+    return this.http.delete(`https://615e89e13d1491001755a97b.mockapi.io/users/${id}`)
   }
 }
+

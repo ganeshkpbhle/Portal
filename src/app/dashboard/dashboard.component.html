@@ -11,6 +11,18 @@
         <app-card title="Today's Strength" count={{count2}}></app-card>
     </div>
 </div>
+<div class="row justify-content-center">
+    <div class="col-xl-8">
+        <h2>This Month {{currMonth}}</h2>
+    </div>
+</div>
 <div class="row">
-    <router-outlet></router-outlet>
+    <div class="col-xl-8 custom">
+        <div ngDefaultControl [(ngModel)]="drawData">
+            <div *ngIf="drawData.length>0">
+                <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="drawData" [autoScale]="true">
+                </ngx-charts-line-chart>
+            </div>
+        </div>
+    </div>
 </div>
