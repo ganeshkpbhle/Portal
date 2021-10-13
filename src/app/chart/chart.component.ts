@@ -42,7 +42,6 @@ export class ChartComponent implements OnInit {
     this.getData();
   }
   Init() {
-    console.log(this.date1);
     this.drawData = [];
     this.list = [];
     let c = 0;
@@ -112,7 +111,7 @@ export class ChartComponent implements OnInit {
           });
         }
       }
-      console.log(tempData);
+      //console.log(tempData);
       tempData.forEach((element,index)=>{
         let cnt = 0;
           c += 1;
@@ -146,10 +145,11 @@ export class ChartComponent implements OnInit {
     });
   }
   Week(d: string) {
-    let today: Date = new Date(d);
+    //console.log(d);
+    let today: Date = new Date(d);    
     let jan: Date = new Date(today.getFullYear(), 0, 1);
-    let numberofdays = Math.floor((today.getTime() - jan.getTime()) / (24 * 60 * 60 * 1000));
-    this.currWeek = this.currYear + "-W" + Math.ceil((today.getDay() + 1 + numberofdays) / 7).toString();
+    let numberofdays = Math.floor((Number(today)- Number(jan)) / (24 * 60 * 60 * 1000));
+    this.currWeek = this.currYear + "-W" + Math.floor((today.getDay() + 1 + numberofdays) / 7).toString();
     console.log("CurrentWeek:" + this.currWeek);
   }
   weekProcess() {
@@ -157,17 +157,18 @@ export class ChartComponent implements OnInit {
     this.Init();
   }
   dateProcess() {
-    console.log(this.date);
     if (this.date.slice(5, 7) !== this.currMonth) {
       this.getData();
     }
 
   }
   selectProcess(event: any) {
+    // console.log(this.currDate);
+    // console.log(this.date1);
     this.viewOption = event.value;
-    this.Week(this.currDate.toISOString());
+    this.Week(this.currDate.toISOString().slice(0,10));
     this.date1 = this.getDateByWeek(this.currWeek).toISOString().slice(0, 10);
-    console.log(this.date1);
+    // console.log(this.date1);
     this.Init();
   }
 
